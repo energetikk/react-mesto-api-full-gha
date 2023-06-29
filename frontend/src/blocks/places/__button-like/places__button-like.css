@@ -1,0 +1,21 @@
+.places__button-like {
+  display: block;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../../images/heart-like.svg);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: white;
+  opacity: 1;
+  transition: opacity .2s ease-out .1s;
+}
+
+.places__button-like:hover {
+  opacity: .5;
+}
+
+
+
+

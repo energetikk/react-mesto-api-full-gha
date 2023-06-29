@@ -1,0 +1,134 @@
+.auth__container {
+    color: white;
+}
+
+.auth__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
+
+    .auth_button {
+      font-family: Inter;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+}
+
+  .auth__submit {
+    margin-top: 216px;
+    width: 358px;
+    height: 50px;
+    background-color: white;
+    border-radius: 2px;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .form__title-auth {
+    margin-bottom: 50px;
+    color: white;
+    font-family: Inter;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .form__auth {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form__item-auth {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px #CCCCCC solid;
+    color: #CCCCCC;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 0 0 13px;
+  }
+
+  .button__sign-in {
+    color: white;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 15px;
+    text-decoration: none;
+  }
+
+  .auth {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .qwe {
+    display: flex;
+    align-items: center;
+  }
+
+
+  .Error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+  }
+  
+  .header__email {
+    color: white;
+    margin: 0 24px 0 0;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .header__singout {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    text-decoration: none;
+    color: #A9A9A9;
+  }
+
+  .info__title {
+    color: black;
+  }
+
+  .popup_message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+  }
+
+  .message__title {
+    color: black;
+    margin: 32px 0 0 0;
+    padding: 0;
+    max-width: 358px;
+    font-family: Inter;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+  }

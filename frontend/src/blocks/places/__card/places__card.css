@@ -1,0 +1,8 @@
+.places__card {
+  max-width: 240px;
+  min-height: 23px;
+  margin: 25px 15px 0 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

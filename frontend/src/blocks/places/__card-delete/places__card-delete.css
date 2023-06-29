@@ -1,0 +1,17 @@
+.places__card-delete {
+  background-image: url(../../../images/Trash.svg);
+  background-repeat: no-repeat;
+  border: none;
+  width: 18px;
+  height: 19px;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 1;
+  transition: opacity .15s ease-in-out;
+}
+
+.places__card-delete:hover {
+  opacity: 0.6;
+}

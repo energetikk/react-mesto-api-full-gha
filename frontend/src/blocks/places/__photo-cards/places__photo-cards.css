@@ -1,0 +1,24 @@
+.places__photo-cards {
+  max-width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 20px;
+  column-gap: 17px;
+}
+
+@media screen and (max-width: 879px) {
+  .places__photo-cards {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    column-gap: 0;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .places__photo-cards {
+    grid-template-columns: 1fr;
+  }
+}

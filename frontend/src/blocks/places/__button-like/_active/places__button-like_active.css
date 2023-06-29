@@ -1,0 +1,7 @@
+.places__button-like_active {
+  background-image: url(../../../../images/heart-like-active.svg);
+}
+
+.places__button-like_active:hover {
+  opacity: 1;
+}
