@@ -17,6 +17,13 @@ mongoose.connect('mongodb://127.0.0.1/mestodb');
 
 app.use(requestLogger);
 app.use(cookieParser());
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
