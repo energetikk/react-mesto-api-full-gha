@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.0.143
+IP 51.250.0.143
 
 Frontend https://mestogram.nomoreparties.sbs
 
