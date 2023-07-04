@@ -1,8 +1,8 @@
 class Api {
   constructor(config) {
     // eslint-disable-next-line no-unused-expressions
-    this._baseUrl = config.baseUrl,
-    this._headers = config.headers
+    this._baseUrl = config.baseUrl;
+    this._headers = config.headers;
   }
 
 //Получить начальные карточки с сервера
@@ -26,7 +26,7 @@ class Api {
 
 //Запросить информацию о пользователе с сервера
   getUserInfo() {
-    return fetch('https://nomoreparties.co/v1/cohort-62/users/me', {
+    return fetch('https://mestogramback.nomoreparties.sbs/users/me', {
     method: 'GET',
     headers: {authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077'}
   })
@@ -109,7 +109,8 @@ changeLikeCardStatus(cardId, isLiked) {
 }
 }
 
-const api = new Api({baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62/',
+// const api = new Api({baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62/',
+const api = new Api({baseUrl: 'https://https://mestogramback.nomoreparties.sbs/',
 headers: {
  authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077',
  "Content-Type": "application/json"
