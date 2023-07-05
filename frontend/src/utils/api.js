@@ -8,8 +8,10 @@ class Api {
 //Получить начальные карточки с сервера
   getInitialCards() {
     return fetch(`${this._baseUrl}cards`, {
-      headers: {authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077'
-      }})
+      // headers: {authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077',
+      credentials: 'include',
+      headers: this._headers,
+      })
       .then(this._checkResponse)
   }
 //Добавить карточку на сервер
@@ -17,6 +19,7 @@ class Api {
     return fetch(`${this._baseUrl}cards`, {
       method: 'POST',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         link: data.link
@@ -26,9 +29,12 @@ class Api {
 
 //Запросить информацию о пользователе с сервера
   getUserInfo() {
-    return fetch('https://mestogramback.nomoreparties.sbs/users/me', {
+    // return fetch('https://mestogramback.nomoreparties.sbs/users/me', {
+    return fetch('http://localhost:3000/users/me', {
     method: 'GET',
-    headers: {authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077'}
+    // headers: {authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077'},
+    headers: this._headers,
+    credentials: 'include',
   })
   .then(this._checkResponse)
   }
@@ -38,6 +44,7 @@ class Api {
     return fetch(`${this._baseUrl}users/me/`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         about: data.description
@@ -51,6 +58,7 @@ class Api {
     return fetch(`${this._baseUrl}users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         avatar: data.avatar
       })})
@@ -61,7 +69,8 @@ class Api {
 deleteCard(cardId) {
   return fetch(`${this._baseUrl}cards/${cardId}`, {
   method: 'DELETE',
-  headers: this._headers
+  headers: this._headers,
+  credentials: 'include',
   })
   .then(this._checkResponse)
 }
@@ -70,7 +79,8 @@ deleteCard(cardId) {
 setLike(cardId) {
   return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
     method: 'PUT',
-    headers: this._headers
+    headers: this._headers,
+    credentials: 'include',
   })
   .then(this._checkResponse)
 }
@@ -79,7 +89,8 @@ setLike(cardId) {
 removeLike(cardId) {
   return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
     method: 'DELETE',
-    headers: this._headers
+    headers: this._headers,
+    credentials: 'include',
   })
   .then(this._checkResponse)
 }
@@ -96,13 +107,15 @@ changeLikeCardStatus(cardId, isLiked) {
   if (isLiked) {
     return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
     method: 'PUT',
-    headers: this._headers
+    headers: this._headers,
+    credentials: 'include',
   })
   .then(this._checkResponse)
   } else {
     return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
     method: 'DELETE',
-    headers: this._headers
+    headers: this._headers,
+    credentials: 'include',
   })
   .then(this._checkResponse)
   }
@@ -110,11 +123,15 @@ changeLikeCardStatus(cardId, isLiked) {
 }
 
 // const api = new Api({baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62/',
-const api = new Api({baseUrl: 'https://https://mestogramback.nomoreparties.sbs/',
+// const api = new Api({baseUrl: 'https://https://mestogramback.nomoreparties.sbs/',
+// const api = new Api({baseUrl: 'https://mestogramback.nomoreparties.sbs/',
+const api = new Api({baseUrl: 'http://localhost:3000/',
 headers: {
  authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077',
+//  authorization: `Bearer ${localStorage.getItem('jwt')}`,
  "Content-Type": "application/json"
- }
+ },
+ credentials: 'include',
 })
 
 export default api;

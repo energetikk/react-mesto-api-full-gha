@@ -161,18 +161,20 @@ function App() {
   const [emailUser, setEmailUser] = useState('');
   
   const tokenCheck = () => {
-    const jwt = localStorage.getItem('jwt')
-    if (jwt) {
-      Auth.getContent(jwt)
+    // const jwt = localStorage.getItem('jwt')
+    // if (jwt) {
+      // Auth.getContent(jwt)
+      Auth.getContent()
       .then(
         (user) => {
           handleLogin(user);
-          navigate('/', {replace: true})
+          setLoggedIn(true);
           setEmailUser(user.data.email);
+          navigate('/', {replace: true})
         }
       )
       .catch(err => console.log(err))
-    }
+    // }
   }
 
   const handleLogin = (email) => {
@@ -207,11 +209,11 @@ function handleCheckRegister(password, email) {
 function handleCheckLogin(password, email) {
   Auth.authorize({password, email})
         .then((res) => {
-            if (res.token) {
-                localStorage.setItem('jwt', res.token);
+            // if (res.token) {
+                // localStorage.setItem('jwt', res.token);
                 handleLogin(email);
                 navigate('/', { replace: true });
-            }
+            // }
         })
         .catch((err) => {
                     handleCheckStatusLoginError();
