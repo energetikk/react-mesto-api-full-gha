@@ -127,9 +127,11 @@ changeLikeCardStatus(cardId, isLiked) {
 // const api = new Api({baseUrl: 'https://mestogramback.nomoreparties.sbs/',
 const api = new Api({baseUrl: 'http://localhost:3000/',
 headers: {
- authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077',
+//  authorization: 'edc06021-97df-405d-a469-7d3ba7b0f077',
 //  authorization: `Bearer ${localStorage.getItem('jwt')}`,
- "Content-Type": "application/json"
+//  authorization: localStorage.getItem('jwt'),
+    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    "Content-Type": "application/json",
  },
  credentials: 'include',
 })

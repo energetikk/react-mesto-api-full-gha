@@ -103,12 +103,14 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    console.log(isLiked);
+    // const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
+    console.log(currentUser._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       console.log(newCard);
-      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+      // setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+      setCards((state) => state.map((c) => (c === card._id ? newCard : c)));
     })
     .catch((err) => {
       console.log(err);
@@ -161,20 +163,22 @@ function App() {
   const [emailUser, setEmailUser] = useState('');
   
   const tokenCheck = () => {
-    // const jwt = localStorage.getItem('jwt')
-    // if (jwt) {
-      // Auth.getContent(jwt)
-      Auth.getContent()
+    const jwt = localStorage.getItem('jwt');
+    // console.log(jwttoken);
+    if (jwt) {
+      Auth.getContent(jwt)
+      // Auth.getContent()
       .then(
         (user) => {
-          handleLogin(user);
-          setLoggedIn(true);
-          setEmailUser(user.data.email);
+          handleLogin(user.email);
+          // setLoggedIn(true);
+          // console.log(user);          
+          setEmailUser(user.email);
           navigate('/', {replace: true})
         }
       )
       .catch(err => console.log(err))
-    // }
+    }
   }
 
   const handleLogin = (email) => {
@@ -209,11 +213,11 @@ function handleCheckRegister(password, email) {
 function handleCheckLogin(password, email) {
   Auth.authorize({password, email})
         .then((res) => {
-            // if (res.token) {
-                // localStorage.setItem('jwt', res.token);
+            if (res.token) {
+                localStorage.setItem('jwt', res.token);
                 handleLogin(email);
                 navigate('/', { replace: true });
-            // }
+            }
         })
         .catch((err) => {
                     handleCheckStatusLoginError();

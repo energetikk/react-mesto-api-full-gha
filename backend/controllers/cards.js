@@ -49,7 +49,8 @@ const setLikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Объект не найден');
       } else {
-        next(res.send({ data: card }));
+        // next(res.send({ data: card }));
+        next(res.send(card));
       }
     })
     .catch((err) => {
@@ -68,7 +69,8 @@ const setUnLikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Объект не найден');
       } else {
-        next(res.send({ data: card }));
+        // next(res.send({ data: card }));
+        next(res.send(card));
       }
     })
     .catch((err) => {

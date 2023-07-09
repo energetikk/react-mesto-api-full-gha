@@ -11,21 +11,23 @@ const DefaultError = require('../errors/defaultError');
 const statusOK = 201;
 
 const login = (req, res, next) => {
-  const { email, password } = req.body;
+  const { password, email } = req.body;
   return User.findOne({ email })
+  // return User.findUserByCredentials({ email })
     .select('+password')
     .orFail(() => new UnauthorizedError('Неправильный логин или пароль'))
     .then((user) => {
       bcrypt.compare(String(password), user.password)
         .then((isValidUser) => {
           if (isValidUser) {
-            const jwt = jsonWebToken.sign({ _id: user._id }, 'secret_phrase');
-            res.cookie('jwt', jwt, {
-              maxAge: 604800000,
-              httpOnly: true,
-              sameSite: true,
-            });
-            res.send({ data: user });
+            const jwt = jsonWebToken.sign({ _id: user._id }, 'secret_phrase', { expiresIn: '7d' });
+            // res.cookie('jwt', token, {
+            //   maxAge: 604800000,
+            //   httpOnly: true,
+            //   sameSite: true,
+            // });
+            // res.send({ user });
+            res.status(200).send({ token: jwt });
           } else {
             throw new UnauthorizedError('Неправильный логин или пароль');
           }
