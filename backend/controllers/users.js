@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jsonWebToken = require('jsonwebtoken');
 const User = require('../models/user');
-
+// const { NODE_ENV, JWT_SECRET } = require('../config');
 const NotFoundError = require('../errors/notFoundError');
 const ConflictError = require('../errors/conflictError');
 const UnauthorizedError = require('../errors/unauthorizedError');
@@ -13,14 +13,13 @@ const statusOK = 201;
 const login = (req, res, next) => {
   const { password, email } = req.body;
   return User.findOne({ email })
-  // return User.findUserByCredentials({ email })
     .select('+password')
     .orFail(() => new UnauthorizedError('Неправильный логин или пароль'))
     .then((user) => {
       bcrypt.compare(String(password), user.password)
         .then((isValidUser) => {
           if (isValidUser) {
-            const jwt = jsonWebToken.sign({ _id: user._id }, 'secret_phrase', { expiresIn: '7d' });
+            const jwt = jsonWebToken.sign({ _id: user._id }, process.env['secret_phrase'], { expiresIn: '7d' });
             // res.cookie('jwt', token, {
             //   maxAge: 604800000,
             //   httpOnly: true,
@@ -93,7 +92,7 @@ const updateProfileUser = (req, res, next) => {
   const { name, about } = req.body;
   const owner = req.user._id;
   User.findByIdAndUpdate(owner, { name, about }, { new: true, runValidators: true })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError('Переданные данные некорректны'));
