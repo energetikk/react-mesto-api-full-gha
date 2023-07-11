@@ -182,7 +182,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, [])
+  }, [loggedIn])
 
 function singOut() {
   localStorage.removeItem('jwt');
