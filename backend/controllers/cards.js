@@ -2,7 +2,6 @@ const Card = require('../models/card');
 
 const NotFoundError = require('../errors/notFoundError');
 const ForbiddenError = require('../errors/forbiddenError');
-// const DefaultError = require('../errors/defaultError');
 const ValidationError = require('../errors/validationError');
 
 const statusOK = 201;
@@ -49,7 +48,6 @@ const setLikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Объект не найден');
       } else {
-        // next(res.send({ data: card }));
         next(res.send(card));
       }
     })
@@ -69,7 +67,6 @@ const setUnLikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Объект не найден');
       } else {
-        // next(res.send({ data: card }));
         next(res.send(card));
       }
     })
