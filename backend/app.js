@@ -20,7 +20,7 @@ mongoose.connect('mongodb://127.0.0.1/mestodb');
 app.use(requestLogger);
 app.use(cookieParser());
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://mestogram.nomoreparties.sbs/sign-in', 'http://mestogram.nomoreparties.sbs/sign-in', 'https://mestogramback.nomoreparties.sbs/sign-in', 'http://mestogramback.nomoreparties.sbs/sign-in'],
   credentials: true,
 }));
 app.get('/crash-test', () => {
