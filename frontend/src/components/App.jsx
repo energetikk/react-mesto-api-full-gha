@@ -21,7 +21,6 @@ import InfoTooltip from './InfoTooltip'
 import logoSuccess from '../images/success.png'
 import logoError from '../images/nosuccess.png'
 
-
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
@@ -47,7 +46,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     api
@@ -58,7 +57,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -105,12 +104,12 @@ function App() {
     // Снова проверяем, есть ли уже лайк на этой карточке
     // const isLiked = card.likes.some((i) => i._id === currentUser._id);
     const isLiked = card.likes.some((i) => i === currentUser._id);
-    console.log(currentUser._id);
+    console.log(isLiked);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       console.log(newCard);
       // setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-      setCards((state) => state.map((c) => (c === card._id ? newCard : c)));
+      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
     })
     .catch((err) => {
       console.log(err);
@@ -164,16 +163,11 @@ function App() {
   
   const tokenCheck = () => {
     const jwt = localStorage.getItem('jwt');
-    // console.log(jwttoken);
     if (jwt) {
       Auth.getContent(jwt)
-      // Auth.getContent()
       .then(
         (user) => {
-          handleLogin(user.email);
-          // setLoggedIn(true);
-          // console.log(user);          
-          setEmailUser(user.email);
+          handleLogin(user);
           navigate('/', {replace: true})
         }
       )
@@ -181,9 +175,9 @@ function App() {
     }
   }
 
-  const handleLogin = (email) => {
+  const handleLogin = (user) => {
     setLoggedIn(true);
-    setEmailUser(email);
+    setEmailUser(user.email);
   }
 
   useEffect(() => {
@@ -198,7 +192,6 @@ function singOut() {
 function handleCheckRegister(password, email) {
   Auth.register({password, email})
         .then((res) => {
-            // handleCheckStatusLoginOk();
             setIsStatusLoginOk(true);
             navigate('/sign-in', { replace: true })
         })
@@ -209,10 +202,10 @@ function handleCheckRegister(password, email) {
         )
 }
 
-
 function handleCheckLogin(password, email) {
   Auth.authorize({password, email})
         .then((res) => {
+          console.log(res.token);
             if (res.token) {
                 localStorage.setItem('jwt', res.token);
                 handleLogin(email);

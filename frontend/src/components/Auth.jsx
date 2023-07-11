@@ -1,6 +1,6 @@
 
 // export const BASE_URL = 'https://auth.nomoreparties.co';
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'http://localhost:3000/';
 
 //Проверка ответа от сервера
 function checkResponse(res) {
@@ -10,12 +10,11 @@ function checkResponse(res) {
   return Promise.reject(`Произошла ошибка: ${res.status}`); // если ошибка, отклоняем промис
 }
 
-export const register = ({password, email}) => {
-  return fetch(`${BASE_URL}/signup`, {
+export const register = ({ password, email }) => {
+  return fetch(`${BASE_URL}signup`, {
     method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
       },
       credentials: 'include',
       body: JSON.stringify({password, email})
@@ -23,12 +22,11 @@ export const register = ({password, email}) => {
   .then(res => checkResponse(res));
 }
 
-export const authorize = ({password, email}) => {
-    return fetch(`${BASE_URL}/signin`, {
+export const authorize = ({ password, email }) => {
+    return fetch(`${BASE_URL}signin`, {
       method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
         },
         credentials: 'include',
         body: JSON.stringify({ password, email })
@@ -38,12 +36,11 @@ export const authorize = ({password, email}) => {
   };
 
 export const getContent = (token) => {
-    return fetch(`${BASE_URL}/users/me`, {
+    return fetch(`${BASE_URL}users/me`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'authorization': `Bearer ${token}`,
-        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       credentials: 'include',
     })
