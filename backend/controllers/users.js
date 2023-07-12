@@ -6,6 +6,7 @@ const ConflictError = require('../errors/conflictError');
 const UnauthorizedError = require('../errors/unauthorizedError');
 const ValidationError = require('../errors/validationError');
 // const DefaultError = require('../errors/defaultError');
+const { JWT_SECRET, NODE_ENV } = require('../utils/config');
 
 const statusOK = 201;
 
@@ -18,7 +19,7 @@ const login = (req, res, next) => {
       bcrypt.compare(String(password), user.password)
         .then((isValidUser) => {
           if (isValidUser) {
-            const jwt = jsonWebToken.sign({ _id: user._id }, process.env['NODE.ENV'] === 'production' ? process.env['JWT.SECRET'] : 'secret_local_dev', { expiresIn: '7d' });
+            const jwt = jsonWebToken.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'secret_local_dev', { expiresIn: '7d' });
             // res.cookie('jwt', token, {
             //   maxAge: 604800000,
             //   httpOnly: true,

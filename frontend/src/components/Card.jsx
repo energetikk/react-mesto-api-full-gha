@@ -20,8 +20,8 @@ function Card({card, onCardClick, onCardLike, onCardDelete, onConfirmDelete}) {
   // Определяем, являемся ли мы владельцем текущей карточки
   // const isOwn = card.owner._id === currentUser._id;
   const isOwn = card.owner === currentUser._id;
-  console.log(card.owner);
-  console.log(currentUser._id);
+  // console.log(card.owner);
+  // console.log(currentUser._id);
 
   // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
   // const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -49,7 +49,7 @@ function Card({card, onCardClick, onCardLike, onCardDelete, onConfirmDelete}) {
           </div>
         </figcaption>
         {/* <button type="button" className="places__card-delete"></button> */}
-        // Далее в разметке используем переменную для условного рендеринга
+// Далее в разметке используем переменную для условного рендеринга
         {isOwn && <button className='places__card-delete' type="button" onClick={handleDeleteClick} />}
       </figure>
     </li>

@@ -8,14 +8,15 @@ const router = require('./routes');
 // const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { PORT, MONGO_DB } = require('./utils/config');
+// const { PORT = 3000 } = process.env;
 
-const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect('mongodb://127.0.0.1/mestodb');
+mongoose.connect(MONGO_DB);
 
 app.use(requestLogger);
 app.use(cookieParser());
