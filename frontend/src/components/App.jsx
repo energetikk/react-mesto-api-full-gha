@@ -15,7 +15,7 @@ import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from './ProtectedRoute'
 import PageNotFound from "./PageNotFound";
-import * as Auth from './Auth';
+import * as Auth from '../utils/Auth';
 import { useNavigate } from "react-router-dom";
 import InfoTooltip from './InfoTooltip'
 import logoSuccess from '../images/success.png'
