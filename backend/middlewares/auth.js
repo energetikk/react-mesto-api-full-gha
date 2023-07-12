@@ -11,10 +11,10 @@ const auth = (req, res, next) => {
   const token = authorization.replace('Bearer ', '');
   let payload;
   try {
-    // payload = jwt.verify(token, process.env['JWT.SECRET']);
     payload = jwt.verify(token, process.env['NODE.ENV'] === 'production' ? process.env['JWT.SECRET'] : 'secret_local_dev');
   } catch (err) {
     next(new UnauthorizedError('Необходима авторизация'));
+    return;
   }
   req.user = payload;
   next();

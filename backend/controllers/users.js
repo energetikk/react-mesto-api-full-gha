@@ -5,7 +5,7 @@ const NotFoundError = require('../errors/notFoundError');
 const ConflictError = require('../errors/conflictError');
 const UnauthorizedError = require('../errors/unauthorizedError');
 const ValidationError = require('../errors/validationError');
-const DefaultError = require('../errors/defaultError');
+// const DefaultError = require('../errors/defaultError');
 
 const statusOK = 201;
 
@@ -72,7 +72,6 @@ const getUserInfo = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
-  console.log(req.body);
   bcrypt.hash(String(req.body.password), 10)
     .then((hashedpassword) => User.create({ ...req.body, password: hashedpassword }))
     .then((user) => res.status(statusOK).send({ data: user.toJSON() }))
@@ -95,7 +94,8 @@ const updateProfileUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError('Переданные данные некорректны'));
-      } else next(new DefaultError('Произошла неизвестная ошибка сервера'));
+      // } else next(new DefaultError('Произошла неизвестная ошибка сервера'));
+      } else next(err);
     });
 };
 
@@ -107,7 +107,8 @@ const updateAvatarUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError('Переданные данные некорректны'));
-      } else next(new DefaultError('Произошла неизвестная ошибка сервера'));
+      // } else next(new DefaultError('Произошла неизвестная ошибка сервера'));
+      } else next(err);
     });
 };
 
