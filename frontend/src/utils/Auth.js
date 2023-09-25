@@ -1,6 +1,7 @@
 
 // export const BASE_URL = 'http://localhost:3000/';
-export const BASE_URL = 'https://mestogramback.nomoreparties.sbs/';
+// export const BASE_URL = 'https://mestogramback.nomoreparties.sbs/';
+export const BASE_URL = 'https://95.140.152.186:3001/';
 
 //Проверка ответа от сервера
 function checkResponse(res) {
