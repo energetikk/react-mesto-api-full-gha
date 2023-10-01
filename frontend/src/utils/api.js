@@ -146,6 +146,6 @@ changeLikeCardStatus(cardId, isLiked) {
 
 // const api = new Api({baseUrl: 'http://localhost:3000/'})
 // const api = new Api({baseUrl: 'https://mestogramback.nomoreparties.sbs/'})
-const api = new Api({baseUrl: 'https://95.140.152.186:3001/'})
+const api = new Api({baseUrl: 'http://95.140.152.186:3001/'})
 
 export default api;
