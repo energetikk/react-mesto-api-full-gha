@@ -193,7 +193,7 @@ function handleCheckRegister(password, email) {
   Auth.register({password, email})
         .then((res) => {
             setIsStatusLoginOk(true);
-            navigate('/sign-in', { replace: true })
+            navigate('/signin', { replace: true })
         })
         .catch((err) => {
             handleCheckStatusLoginError(err);
@@ -225,8 +225,8 @@ return (
       <Header loggedIn={loggedIn} emailUser={emailUser} singOut={singOut}/>
       
       <Routes>
-        <Route path="/sign-up" element={<Register handleCheckRegister={handleCheckRegister}/>} />
-        <Route path="/sign-in" element={<Login handleCheckLogin={handleCheckLogin}/>} />
+        <Route path="/signup" element={<Register handleCheckRegister={handleCheckRegister}/>} />
+        <Route path="/signin" element={<Login handleCheckLogin={handleCheckLogin}/>} />
         <Route  path="/" element={<ProtectedRoute element={Main} loggedIn={loggedIn} 
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
@@ -235,7 +235,7 @@ return (
         onCardLike={handleCardLike}
         onConfirmDelete={handleConfirmPopupOpen}
         cards={cards}/>} />
-        <Route path="/" element={loggedIn ? <Navigate to ="/" /> : <Navigate to="/sign-in" replace/>}/>
+        <Route path="/" element={loggedIn ? <Navigate to ="/" /> : <Navigate to="/signin" replace/>}/>
         <Route path="*" element={<PageNotFound />}/>
       </Routes>
         
