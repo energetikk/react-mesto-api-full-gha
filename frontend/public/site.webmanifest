@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "Mestogram by Pavel Demin",
   "short_name": "",
   "icons": [
     {
@@ -13,6 +13,7 @@
       "type": "image/png"
     }
   ],
+  "start_url": ".",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone"
