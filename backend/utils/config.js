@@ -1,9 +1,9 @@
 const {
   JWT_SECRET,
   NODE_ENV,
-  MONGO_DB = 'mongodb://127.0.0.1/mestodb',
-  // PORT = 3000,
-  PORT = 3001,
+  // MONGO_DB = 'mongodb://127.0.0.1/mestodb',
+  MONGO_DB = 'mongodb://mongo:27017/mestodb',
+  PORT = 3000,
 } = process.env;
 
 module.exports = {

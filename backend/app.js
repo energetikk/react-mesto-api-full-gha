@@ -21,7 +21,7 @@ mongoose.connect(MONGO_DB);
 app.use(requestLogger);
 app.use(cookieParser());
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://mestogram.nomoreparties.sbs', 'http://mestogram.nomoreparties.sbs', 'https://mestogramback.nomoreparties.sbs', 'http://mestogramback.nomoreparties.sbs', 'http://95.140.152.186:3001', 'https://95.140.152.186:3001', 'http://mesto.deminpavel.ru', 'https://mesto.deminpavel.ru', 'https://mestoapi.deminpavel.ru', 'http://mestoapi.deminpavel.ru'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://80.90.179.112:3001', 'https://80.90.179.112:3001', 'http://mesto.paveldev.ru', 'https://mesto.paveldev.ru', 'https://mestoapi.paveldev.ru', 'http://mestoapi.paveldev.ru'],
   credentials: true,
 }));
 app.get('/crash-test', () => {
