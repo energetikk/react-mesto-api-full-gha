@@ -7,18 +7,13 @@
 
 ## О сайте
 
-Сервис <a href="https://mesto.online.nomoredomains.work/" target="_blank">Mesto</a> интерактивная страница, куда можно зарегистрироваться и добавлять фотографии, удалять их и ставить лайки.
+Сервис <a href="https://mesto.paveldev.ru/" target="_blank">Mesto</a> интерактивная страница, куда можно зарегистрироваться и добавлять фотографии, удалять их и ставить лайки.
 
-Публичный IP - 51.250.0.143
-
-Ссылка на сайт -https://mestogram.nomoreparties.sbs
-
-Ссылка API - https://mestogramback.nomoreparties.sbs
+Ссылка на сайт -https://mesto.paveldev.ru
 
 ## О проекте и технологиях разработки
 
 В разработке проекта использовались следующие веб-технологии:
-
 
 
 ### Front-end
@@ -62,5 +57,7 @@
 </ul>
 
 </br>
+
+Приложение запускается в Docker контейнере на сервере.
 
 Адрес репозитория: https://github.com/energetikk/react-mesto-api-full-gha
