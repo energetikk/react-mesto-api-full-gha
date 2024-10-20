@@ -1,8 +1,9 @@
 version: "3"
 services:
   react-app:
-    build: ./frontend
-    image: react-app
+    # build: ./frontend
+    # image: react-app
+    image: energetikk/react-app
     container_name: frontend_conatainer
     stdin_open: true
     ports: 
@@ -10,8 +11,9 @@ services:
     networks:
       - mern-app
   api-server:
-    build: ./backend
-    image: api-server
+    # build: ./backend
+    # image: api-server
+    image: energetikk/api-server
     container_name: backend_conatainer
     ports:
       - "3001:3000"
