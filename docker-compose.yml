@@ -1,41 +1,45 @@
 version: "3"
 services:
-  # react-app:
-  #   build: ./frontend
-  #   image: react-app
-  #   stdin_open: true
-  #   ports: 
-  #     - "3000:3000"
-  #   networks:
-  #     - mern-app
+  react-app:
+    build: ./frontend
+    image: react-app
+    container_name: frontend_conatainer
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    networks:
+      - mern-app
   api-server:
     build: ./backend
     image: api-server
+    container_name: backend_conatainer
     ports:
-      # - "3001:3000"
-      - "3000:3000"
+      - "3001:3000"
+      # - "3000:3000"
     networks:
       - mern-app
     depends_on:
       - mongo
   mongo:
     image: mongo:8.0.1-noble
+    container_name: mongo_conatainer
     ports:
       - "27017:27017"
     networks:
       - mern-app
     volumes:
       - mongo-data:/data/db
-  # nginx:
-  #   image: nginx
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/nginx.conf
-  #   ports:
-  #     - "80:80"
-  #   networks:
-  #     - mern-app
-  #   depends_on:
-  #     - react-app
+  nginx:
+    image: nginx
+    container_name: nginx_conatainer
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    networks:
+      - mern-app
+    depends_on:
+      - react-app
 networks:
   mern-app:
     driver: bridge

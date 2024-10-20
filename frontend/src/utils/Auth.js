@@ -1,6 +1,7 @@
 
-// export const BASE_URL = 'http://localhost:3001/';
-export const BASE_URL = 'http://localhost:3000/';
+export const BASE_URL = 'http://localhost:3001/';
+// export const BASE_URL = 'http://localhost:3000/';
+// export const BASE_URL = 'https://paveldev.ru:3000/';
 // export const BASE_URL = 'http://95.140.152.186:3001/';
 // export const BASE_URL = 'https://mestoapi.deminpavel.ru/';
 
