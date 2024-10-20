@@ -12,7 +12,8 @@ services:
     build: ./backend
     image: api-server
     ports:
-      - "3001:3000"
+      # - "3001:3000"
+      - "3000:3000"
     networks:
       - mern-app
     depends_on:
