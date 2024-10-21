@@ -205,7 +205,6 @@ function handleCheckRegister(password, email) {
 function handleCheckLogin(password, email) {
   Auth.authorize({password, email})
         .then((res) => {
-          console.log(res.token);
             if (res.token) {
                 localStorage.setItem('jwt', res.token);
                 handleLogin(email);
