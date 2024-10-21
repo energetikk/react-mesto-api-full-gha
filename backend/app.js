@@ -21,7 +21,7 @@ mongoose.connect(MONGO_DB);
 app.use(requestLogger);
 app.use(cookieParser());
 app.use(cors({
-  origin: ['https://mesto-demin.vercel.app', 'https://localhost', 'http://localhost', 'http://localhost:3000', 'http://localhost:3001', 'http://80.90.179.112:3001', 'https://80.90.179.112:3001', 'http://mesto.paveldev.ru', 'https://mesto.paveldev.ru', 'https://mestoapi.paveldev.ru', 'http://mestoapi.paveldev.ru'],
+  origin: ['https://mesto-demin.vercel.app', 'https://localhost', 'http://localhost', 'http://localhost:3000', 'http://localhost:3001', 'http://80.90.179.112:3001', 'https://80.90.179.112:3001', 'https://194.87.161.5:3001', 'https://194.87.161.5:3001', 'http://mesto.paveldev.ru', 'https://mesto.paveldev.ru', 'https://mestoapi.paveldev.ru', 'http://mestoapi.paveldev.ru'],
   credentials: true,
 }));
 app.get('/crash-test', () => {
