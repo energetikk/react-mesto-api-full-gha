@@ -144,7 +144,8 @@ changeLikeCardStatus(cardId, isLiked) {
 }
 }
 
-const api = new Api({baseUrl: 'http://localhost:3001/'})
+// const api = new Api({baseUrl: 'http://localhost:3001/'})
+const api = new Api({baseUrl: '/api/'})
 // const api = new Api({baseUrl: 'http://localhost:3000/'})
 // const api = new Api({baseUrl: 'http://80.90.179.112:3000/'})
 // const api = new Api({baseUrl: 'http://www.paveldev.ru:3000/'})
